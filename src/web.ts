@@ -39,9 +39,9 @@ export class NativePurchasesWeb
     productIdentifier: string;
     planIdentifier: string;
     quantity: number;
-  }): Promise<{ transactionId: string }> {
+  }): Promise<{ transactionId: string ,receipt:string}> {
     console.error("purchaseProduct only mocked in web" + options);
-    return { transactionId: "transactionId" };
+    return { transactionId: "transactionId",receipt:"receipt" };
   }
 
   async isBillingSupported(): Promise<{ isBillingSupported: boolean }> {

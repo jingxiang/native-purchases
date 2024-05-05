@@ -136,6 +136,7 @@ Get the native Capacitor plugin version
 | Prop                | Type                | Description                                  |
 | ------------------- | ------------------- | -------------------------------------------- |
 | **`transactionId`** | <code>string</code> | RevenueCat Id associated to the transaction. |
+| **`receipt`**       | <code>string</code> |                                              |
 
 
 #### Product

@@ -146,6 +146,7 @@ export interface Transaction {
    * RevenueCat Id associated to the transaction.
    */
   readonly transactionId: string;
+  readonly receipt: string;
   /**
    * Product Id associated with the transaction.
    */
