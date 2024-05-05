@@ -49,30 +49,7 @@ public class NativePurchasesPlugin: CAPPlugin {
                     case let .success(.verified(transaction)):
                         // Successful purhcase
                         await transaction.finish()
-						let transactionData = [
-							"bundleId" : transaction.bundleId,
-							"currency" : transaction.currency,
-							"deviceVerification" : transaction.deviceVerification,
-							"deviceVerificationNonce" : transaction.deviceVerificationNonce,
-							"environment" : transaction.environment,
-							"expiresDate" :transaction.expiresDate,
-							"inAppOwnershipType" : transaction.inAppOwnershipType,
-							"originalPurchaseDate" : transaction.originalPurchaseDate,
-							"originalTransactionId" : transaction.originalTransactionId,
-							"price" : transaction.price,
-							"productId" : transaction.productId,
-							"purchaseDate" : transaction.purchaseDate,
-							"quantity" : transaction.quantity,
-							"signedDate" : transaction.signedDate,
-							"storefront" : transaction.storefront,
-							"storefrontId" :transaction.storefrontId,
-							"subscriptionGroupIdentifier" : transaction.subscriptionGroupIdentifier,
-							"transactionId" : transaction.transactionId,
-							"transactionReason" : transaction.transactionReason,
-							"type" : transaction.type,
-							"webOrderLineItemId" : transaction.webOrderLineItemId
-						]
-                        call.resolve(["transaction": transactionData])
+                        call.resolve(["receiptData": transaction.rawReceiptData])
                     case let .success(.unverified(_, error)):
                         // Successful purchase but transaction/receipt can't be verified
                         // Could be a jailbroken phone
