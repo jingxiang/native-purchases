@@ -49,7 +49,12 @@ public class NativePurchasesPlugin: CAPPlugin {
                     case let .success(.verified(transaction)):
                         // Successful purhcase
                         await transaction.finish()
-                        call.resolve(["receiptData": transaction.rawReceiptData])
+                        if let receiptData = transaction.transactionReceipt {
+							let receiptString = receiptData.base64EncodedString()
+							call.resolve(["receiptData": receiptString])
+						} else {
+							call.reject("Failed to get receipt data")
+						}
                     case let .success(.unverified(_, error)):
                         // Successful purchase but transaction/receipt can't be verified
                         // Could be a jailbroken phone
