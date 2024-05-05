@@ -42,12 +42,12 @@ Add this to manifest
 ### restorePurchases()
 
 ```typescript
-restorePurchases() => any
+restorePurchases() => Promise<{ customerInfo: CustomerInfo; }>
 ```
 
 Restores a user's previous  and links their appUserIDs to any user's also using those .
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ customerInfo: <a href="#customerinfo">CustomerInfo</a>; }&gt;</code>
 
 --------------------
 
@@ -55,7 +55,7 @@ Restores a user's previous  and links their appUserIDs to any user's also using 
 ### purchaseProduct(...)
 
 ```typescript
-purchaseProduct(options: { productIdentifier: string; planIdentifier?: string; productType?: PURCHASE_TYPE; quantity?: number; }) => any
+purchaseProduct(options: { productIdentifier: string; planIdentifier?: string; productType?: PURCHASE_TYPE; quantity?: number; }) => Promise<Transaction>
 ```
 
 Started purchase process for the given product.
@@ -64,7 +64,7 @@ Started purchase process for the given product.
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | **`options`** | <code>{ productIdentifier: string; planIdentifier?: string; productType?: <a href="#purchase_type">PURCHASE_TYPE</a>; quantity?: number; }</code> | - The product to purchase |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;<a href="#transaction">Transaction</a>&gt;</code>
 
 --------------------
 
@@ -72,16 +72,16 @@ Started purchase process for the given product.
 ### getProducts(...)
 
 ```typescript
-getProducts(options: { productIdentifiers: string[]; planIdentifier?: string; productType?: PURCHASE_TYPE; }) => any
+getProducts(options: { productIdentifiers: string[]; planIdentifier?: string; productType?: PURCHASE_TYPE; }) => Promise<{ products: Product[]; }>
 ```
 
 Gets the product info associated with a list of product identifiers.
 
-| Param         | Type                                                                                                                        | Description                                                    |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **`options`** | <code>{ productIdentifiers: {}; planIdentifier?: string; productType?: <a href="#purchase_type">PURCHASE_TYPE</a>; }</code> | - The product identifiers you wish to retrieve information for |
+| Param         | Type                                                                                                                              | Description                                                    |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **`options`** | <code>{ productIdentifiers: string[]; planIdentifier?: string; productType?: <a href="#purchase_type">PURCHASE_TYPE</a>; }</code> | - The product identifiers you wish to retrieve information for |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ products: Product[]; }&gt;</code>
 
 --------------------
 
@@ -89,12 +89,12 @@ Gets the product info associated with a list of product identifiers.
 ### isBillingSupported()
 
 ```typescript
-isBillingSupported() => any
+isBillingSupported() => Promise<{ isBillingSupported: boolean; }>
 ```
 
 Check if billing is supported for the current device.
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ isBillingSupported: boolean; }&gt;</code>
 
 --------------------
 
@@ -102,12 +102,12 @@ Check if billing is supported for the current device.
 ### getPluginVersion()
 
 ```typescript
-getPluginVersion() => any
+getPluginVersion() => Promise<{ version: string; }>
 ```
 
 Get the native Capacitor plugin version
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ version: string; }&gt;</code>
 
 --------------------
 
@@ -121,7 +121,7 @@ Get the native Capacitor plugin version
 | ------------------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **`activeSubscriptions`**            | <code>[string]</code>       | Set of active subscription skus                                                                                                                                                                                                                                                                                                                  |
 | **`allPurchasedProductIdentifiers`** | <code>[string]</code>       | Set of purchased skus, active and inactive                                                                                                                                                                                                                                                                                                       |
-| **`nonSubscriptionTransactions`**    | <code>{}</code>             | Returns all the non-subscription a user has made. The are ordered by purchase date in ascending order.                                                                                                                                                                                                                                           |
+| **`nonSubscriptionTransactions`**    | <code>Transaction[]</code>  | Returns all the non-subscription a user has made. The are ordered by purchase date in ascending order.                                                                                                                                                                                                                                           |
 | **`latestExpirationDate`**           | <code>string \| null</code> | The latest expiration date of all purchased skus                                                                                                                                                                                                                                                                                                 |
 | **`firstSeen`**                      | <code>string</code>         | The date this user was first seen in RevenueCat.                                                                                                                                                                                                                                                                                                 |
 | **`originalAppUserId`**              | <code>string</code>         | The original App User Id recorded for this user.                                                                                                                                                                                                                                                                                                 |
@@ -153,7 +153,7 @@ Get the native Capacitor plugin version
 | **`subscriptionGroupIdentifier`** | <code>string</code>                                                     | Group identifier for the product.                                        |
 | **`subscriptionPeriod`**          | <code><a href="#subscriptionperiod">SubscriptionPeriod</a></code>       | The <a href="#product">Product</a> subcription group identifier.         |
 | **`introductoryPrice`**           | <code><a href="#skproductdiscount">SKProductDiscount</a> \| null</code> | The <a href="#product">Product</a> introductory Price.                   |
-| **`discounts`**                   | <code>{}</code>                                                         | The <a href="#product">Product</a> discounts list.                       |
+| **`discounts`**                   | <code>SKProductDiscount[]</code>                                        | The <a href="#product">Product</a> discounts list.                       |
 
 
 #### SubscriptionPeriod
