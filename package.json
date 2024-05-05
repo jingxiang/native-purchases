@@ -1,6 +1,6 @@
 {
   "name": "@capgo/native-purchases",
-  "version": "0.0.61",
+  "version": "0.0.62",
   "description": "In-app Subscriptions Made Easy",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -79,6 +79,6 @@
     "registry": "https://packages.aliyun.com/61ce9c416112fe9819da9362/npm/npm-registry/"
   },
   "dependencies": {
-    "@capgo/native-purchases": "^0.0.61"
+    "@capgo/native-purchases": "^0.0.62"
   }
 }
